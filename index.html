@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitVerse AI - Futuristic Premium AI Fitness Ecosystem</title>
+  
+  <!-- SEO Best Practices -->
+  <meta name="description" content="Welcome to FitVerse AI. Experience high-fidelity personalized fitness, custom visual avatars, dynamic AI workouts, nutritional diets, and voice-command chatbot integrations.">
+  <meta name="keywords" content="FitVerse AI, AI Fitness, Glassmorphism Dashboard, Fitness Chatbot, Custom Avatar, Workout Generator, Diet Planner">
+  <meta name="author" content="FitVerse AI">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Glow Blobs for futuristic cyber styling -->
+  <div class="bg-glow-container" aria-hidden="true">
+    <div class="glow-blob blob-cyan"></div>
+    <div class="glow-blob blob-purple"></div>
+    <div class="glow-blob blob-emerald"></div>
+  </div>
+
+  <div class="app-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar" id="appNavbar">
+      <a href="#" class="nav-brand">
+        <span class="brand-icon">⚡</span>
+        <div class="brand-text">FITVERSE<span>AI</span></div>
+      </a>
+      
+      <div class="nav-actions">
+        <!-- Global Quick Stats (Glassmorphic Badges) -->
+        <div class="metric-info" style="display:flex; gap:1rem; align-items:center;">
+          <div class="cyber-badge" style="margin-bottom:0; background:rgba(255, 170, 0, 0.1); border-color:var(--neon-gold); color:var(--neon-gold);">
+            🔥 <span id="headerStreakVal">3 Days</span>
+          </div>
+          <div class="cyber-badge" style="margin-bottom:0; background:rgba(189, 0, 255, 0.1); border-color:var(--neon-purple); color:#d85cff;">
+            🏆 XP: <span id="headerXpVal">150</span>
+          </div>
+        </div>
+        
+        <!-- Admin Panel Toggle & Quick Log Out -->
+        <button class="btn btn-secondary" id="btnAdminPanel" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="openAdminPanel()">👑 Admin</button>
+        <button class="btn btn-cyber-outline" id="btnLogout" data-t="logout">Log Out</button>
+      </div>
+    </nav>
+
+    <!-- ==========================================
+         VIEW 1: AUTHENTICATION MODULE
+         ========================================== -->
+    <div id="view-auth" class="view-container active">
+      <div class="auth-grid">
+        <!-- Brand Presentation Side -->
+        <div class="auth-visual-side">
+          <div class="cyber-badge">SYSTEM INTERFACE</div>
+          <h1>Ascend Beyond<br><span>Limits</span></h1>
+          <p>FitVerse AI is a premium neural fitness companion. Unlock tailored metabolic scripts, compile custom exercise protocols, and customize your evolving digital avatar.</p>
+          
+          <div class="auth-features-list">
+            <div class="auth-feature-item">
+              <i>🤖</i>
+              <span>AI-Guided Fitness Coaching</span>
+            </div>
+            <div class="auth-feature-item">
+              <i>🎨</i>
+              <span>Interactive Customizable Avatar System</span>
+            </div>
+            <div class="auth-feature-item">
+              <i>🎵</i>
+              <span>Mood-Matched Motivation Playlists</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forms Side -->
+        <div class="auth-card-side">
+          <!-- Auth Form Card -->
+          <div class="glass-card auth-form-card" id="cardAuthGroup">
+            <div class="auth-tabs">
+              <div class="auth-tab active" id="tabLogin" data-t="login">Login</div>
+              <div class="auth-tab" id="tabSignup" data-t="signup">Sign Up</div>
+            </div>
+
+            <h3 id="authTitle" data-t="welcome_back" style="font-family: var(--font-cyber); margin-bottom: 0.5rem;">Welcome Back, Fighter</h3>
+            <p id="authDesc" data-t="welcome_desc" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem;">Enter your credentials to interface with your personalized AI fitness avatar.</p>
+
+            <form id="authForm" novalidate>
+              <!-- Signup specific username field -->
+              <div class="form-group" id="formSignupGroup" style="display: none;">
+                <label class="form-label" for="authUsername" data-t="username">Username</label>
+                <div class="input-wrapper">
+                  <input type="text" id="authUsername" class="form-input" placeholder="WarriorX" value="Fighter">
+                </div>
+              </div>
+
+              <!-- General email field -->
+              <div class="form-group">
+                <label class="form-label" for="authEmail" data-t="email">Email Address</label>
+                <div class="input-wrapper">
+                  <input type="email" id="authEmail" class="form-input" placeholder="fighter@fitverse.ai" value="fighter@fitverse.ai" required>
+                </div>
+              </div>
+
+              <!-- General password field -->
+              <div class="form-group">
+                <label class="form-label" for="authPassword" data-t="password">Password</label>
+                <div class="input-wrapper">
+                  <input type="password" id="authPassword" class="form-input" placeholder="••••••••" value="password123" required>
+                  <button type="button" class="input-icon-btn" title="Toggle password visibility">👁️‍🗨️</button>
+                </div>
+              </div>
+
+              <div class="auth-footer">
+                <label class="checkbox-container">
+                  <input type="checkbox" id="rememberMe" checked>
+                  <span class="checkbox-checkmark"></span>
+                  <span data-t="remember_me">Remember Me</span>
+                </label>
+                <a href="#" class="auth-link" id="linkForgot" data-t="forgot_password">Forgot Password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="btnSubmitAuth" style="width: 100%; margin-top: 1.5rem;" data-t="login">Login</button>
+            </form>
+
+            <!-- Google Social Authentication Section -->
+            <div class="social-auth">
+              <div class="social-title" data-t="or_social">Or Connect Via</div>
+              <button type="button" class="btn btn-google" id="btnGoogle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" style="vertical-align: middle; margin-right: 8px;">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                  <path fill="#4285F4" d="M46.5 24c0-1.55-.15-3.24-.47-4.77H24v9.03h12.75c-.55 2.87-2.22 5.29-4.72 6.96l7.3 5.66C43.51 36.6 46.5 30.93 46.5 24z"/>
+                  <path fill="#FBBC05" d="M10.54 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.98-6.19z"/>
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.3-5.66c-2.2 1.47-5.01 2.47-8.59 2.47-6.26 0-11.57-4.22-13.46-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
+                Google
+              </button>
+            </div>
+          </div>
+
+          <!-- Forgot Password Form Card -->
+          <div class="glass-card forgot-card" id="cardForgotGroup" style="display: none;">
+            <h3 data-t="forgot_title" style="font-family: var(--font-cyber); margin-bottom: 0.5rem;">Restore Access</h3>
+            <p data-t="forgot_desc" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem;">Enter your registered email below to receive a secure recovery code.</p>
+
+            <form id="forgotForm">
+              <div class="form-group">
+                <label class="form-label" for="forgotEmail" data-t="email">Email Address</label>
+                <div class="input-wrapper">
+                  <input type="email" id="forgotEmail" class="form-input" placeholder="fighter@fitverse.ai" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" data-t="send_recovery">Send Recovery Link</button>
+              <div style="text-align: center; margin-top: 1rem;">
+                <a href="#" class="auth-link" id="linkBackToLogin" data-t="back_to_login">Back to Login</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==========================================
+         VIEW 2: USER ONBOARDING MODULE (6 STEPS)
+         ========================================== -->
+    <div id="view-onboarding" class="view-container">
+      <div class="onboarding-container">
+        
+        <div class="onboarding-header">
+          <div class="cyber-badge">ONBOARDING SEQUENCER</div>
+          <h2 data-t="onboarding_title">Configure Your DNA</h2>
+        </div>
+
+        <!-- Onboarding Stepper Header -->
+        <div class="stepper" id="onboardingStepper">
+          <div class="stepper-progress" id="stepperProgress"></div>
+          <div class="step-node active" data-title="Identity" id="node-1">1</div>
+          <div class="step-node" data-title="Targets" id="node-2">2</div>
+          <div class="step-node" data-title="Diet" id="node-3">3</div>
+          <div class="step-node" data-title="Allergies" id="node-4">4</div>
+          <div class="step-node" data-title="Region" id="node-5">5</div>
+          <div class="step-node" data-title="Vibe" id="node-6">6</div>
+          <div class="step-node" data-title="Companion" id="node-7">7</div>
+        </div>
+
+        <div class="glass-card" style="padding: 2.5rem 2rem;">
+          
+          <!-- STEP 1: Basic Information -->
+          <div class="onboarding-step active" id="ob-step-1">
+            <h3 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Step 1: Physical Identity</h3>
+            
+            <div class="form-group">
+              <label class="form-label" for="ob-name" data-t="fullname">Full Name</label>
+              <input type="text" id="ob-name" class="form-input" placeholder="Ronnie Cutler">
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="ob-age" data-t="age">Age</label>
+                <input type="number" id="ob-age" class="form-input" placeholder="25" min="12" max="100">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ob-gender" data-t="gender">Gender</label>
+                <select id="ob-gender" class="custom-select">
+                  <option value="male" data-t="male">Male</option>
+                  <option value="female" data-t="female">Female</option>
+                  <option value="other" data-t="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="ob-height">Height (<span class="unit-h-lbl">cm</span>)</label>
+                <input type="number" id="ob-height" class="form-input" placeholder="175">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ob-weight">Weight (<span class="unit-w-lbl">kg</span>)</label>
+                <input type="number" id="ob-weight" class="form-input" placeholder="78">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ob-target">Target Weight (<span class="unit-w-lbl">kg</span>)</label>
+                <input type="number" id="ob-target" class="form-input" placeholder="72">
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Fitness Information -->
+          <div class="onboarding-step" id="ob-step-2">
+            <h3 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Step 2: Training Objectives</h3>
+            
+            <label class="form-label" data-t="fitness_goal">Fitness Goal</label>
+            <div class="option-grid" id="ob-goal-grid">
+              <div class="select-card selected" data-val="muscle_gain">
+                <span class="select-card-icon">💪</span>
+                <div class="select-card-title" data-t="muscle_gain">Muscle Gain</div>
+                <div class="select-card-desc">Hypertrophy & strength overload.</div>
+              </div>
+              <div class="select-card" data-val="fat_loss">
+                <span class="select-card-icon">🔥</span>
+                <div class="select-card-title" data-t="fat_loss">Fat Loss</div>
+                <div class="select-card-desc">Caloric restriction & cardio optimization.</div>
+              </div>
+              <div class="select-card" data-val="maintenance">
+                <span class="select-card-icon">⚖️</span>
+                <div class="select-card-title" data-t="maintenance">Maintenance</div>
+                <div class="select-card-desc">Steady muscle density & recovery.</div>
+              </div>
+              <div class="select-card" data-val="endurance">
+                <span class="select-card-icon">🏃</span>
+                <div class="select-card-title" data-t="endurance">Endurance</div>
+                <div class="select-card-desc">Stamina and aerobic expansion.</div>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2rem;">
+              <div>
+                <label class="form-label" data-t="workout_pref">Workout Preference</label>
+                <div class="option-grid" id="ob-workout-grid" style="grid-template-columns: 1fr 1fr;">
+                  <div class="select-card selected" data-val="gym">
+                    <span class="select-card-icon">🏋️</span>
+                    <span class="select-card-title" data-t="gym">Gym</span>
+                  </div>
+                  <div class="select-card" data-val="home">
+                    <span class="select-card-icon">🏠</span>
+                    <span class="select-card-title" data-t="home">Home</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="form-label" data-t="fitness_level">Fitness Level</label>
+                <select id="ob-level" class="custom-select" style="height: calc(100% - 24px);">
+                  <option value="beginner" data-t="beginner">Beginner</option>
+                  <option value="intermediate" data-t="intermediate" selected>Intermediate</option>
+                  <option value="advanced" data-t="advanced">Advanced</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: Dietary Preferences -->
+          <div class="onboarding-step" id="ob-step-3">
+            <h3 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Step 3: Nutrition Engine Settings</h3>
+            
+            <label class="form-label" data-t="diet_pref">Dietary Preference</label>
+            <div class="option-grid" id="ob-diet-grid">
+              <div class="select-card selected" data-val="vegetarian">
+                <span class="select-card-icon">🥦</span>
+                <div class="select-card-title" data-t="vegetarian">Vegetarian</div>
+                <div class="select-card-desc">Plant and dairy protein fuel.</div>
+              </div>
+              <div class="select-card" data-val="non_vegetarian">
+                <span class="select-card-icon">🍗</span>
+                <div class="select-card-title" data-t="non_vegetarian">Non-Vegetarian</div>
+                <div class="select-card-desc">Standard lean meats & poultry.</div>
+              </div>
+              <div class="select-card" data-val="vegan">
+                <span class="select-card-icon">🌱</span>
+                <div class="select-card-title" data-t="vegan">Vegan</div>
+                <div class="select-card-desc">Pure vegan plant nutrition.</div>
+              </div>
+              <div class="select-card" data-val="custom_diet">
+                <span class="select-card-icon">🥣</span>
+                <div class="select-card-title" data-t="custom_diet">Custom Diet</div>
+                <div class="select-card-desc">Tailor-made customized food maps.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Allergy Selection -->
+          <div class="onboarding-step" id="ob-step-4">
+            <h3 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Step 4: Allergy Filter</h3>
+            
+            <div class="form-group">
+              <label class="form-label" for="ob-allergy" data-t="allergy">Allergies</label>
+              <select id="ob-allergy" class="custom-select">
+                <option value="None">None</option>
+                <option value="Nuts">Nuts</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Gluten">Gluten</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Soy">Soy</option>
+                <option value="Eggs">Eggs</option>
+              </select>
+              <p style="color:var(--text-muted); font-size:0.85rem; margin-top:1rem;">Our generator excludes allergic compounds from custom meal calculations.</p>
+            </div>
+          </div>
+
+          <!-- STEP 5: Global Personalization Engine -->
+          <div class="onboarding-step" id="ob-step-5">
+            <h3 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Step 5: Global Configurations</h3>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="ob-country" data-t="country">Country</label>
+                <input type="text" id="ob-country" class="form-input" placeholder="India">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ob-region" data-t="state_region">State or Region</label>
+                <input type="text" id="ob-region" class="form-input" placeholder="Gujarat">
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="ob-lang" data-t="preferred_lang">Interface Language</label>
+                <select id="ob-lang" class="custom-select">
+                  <option value="en">English (EN)</option>
+                  <option value="es">Español (ES)</option>
+                  <option value="hi">हिन्दी (HI)</option>
+                  <option value="gu">ગુજરાતી (GU)</option>
+                  <option value="ja">日本語 (JA)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ob-music-lang" data-t="music_lang">Music Lyrics Language</label>
+                <select id="ob-music-lang" class="custom-select">
+                  <option value="en">English (Pop/EDM)</option>
+                  <option value="hi">Hindi (Bollywood)</option>
+                  <option value="gu">Gujarati (Garba/Folk)</option>
+                  <option value="es">Spanish (Cardio/Latin)</option>
+                  <option value="ja">Japanese (J-Rock/Anime)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="ob-units" data-t="preferred_units">Preferred Units</label>
+                <select id="ob-units" class="custom-select">
+                  <option value="metric">Kilograms (kg) / Centimeters (cm)</option>
+                  <option value="imperial">Pounds (lbs) / Inches (in)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ob-budget">Budget Preference</label>
+                <select id="ob-budget" class="custom-select">
+                  <option value="low">Low Budget (Affordable)</option>
+                  <option value="moderate" selected>Moderate (Standard Healthy)</option>
+                  <option value="premium">Premium (Organic/Specialty)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label class="form-label" for="ob-activity">Activity Level</label>
+              <select id="ob-activity" class="custom-select">
+                <option value="sedentary">Sedentary (Little or no exercise)</option>
+                <option value="lightly_active" selected>Lightly Active (Exercise 1-3 days/week)</option>
+                <option value="moderately_active">Moderately Active (Exercise 3-5 days/week)</option>
+                <option value="very_active">Very Active (Exercise 6-7 days/week)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- STEP 6: Mood and Music Preferences -->
+          <div class="onboarding-step" id="ob-step-6">
+            <h3 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Step 6: Sync Mental Frequencies</h3>
+            
+            <label class="form-label" data-t="current_mood">Current Mood</label>
+            <div class="option-grid" id="ob-mood-grid">
+              <div class="select-card selected" data-val="motivated">
+                <span class="select-card-icon">⚡</span>
+                <span class="select-card-title">Motivated</span>
+              </div>
+              <div class="select-card" data-val="happy">
+                <span class="select-card-icon">😊</span>
+                <span class="select-card-title">Happy</span>
+              </div>
+              <div class="select-card" data-val="sad">
+                <span class="select-card-icon">😔</span>
+                <span class="select-card-title">Sad</span>
+              </div>
+              <div class="select-card" data-val="stressed">
+                <span class="select-card-icon">🧠</span>
+                <span class="select-card-title">Stressed</span>
+              </div>
+              <div class="select-card" data-val="excited">
+                <span class="select-card-icon">🤩</span>
+                <span class="select-card-title">Excited</span>
+              </div>
+            </div>
+
+            <label class="form-label" style="margin-top:2rem;" data-t="favorite_music">Favorite Music Genre</label>
+            <div class="option-grid">
+              <div class="select-card genre-card" data-val="Pop">
+                <span class="select-card-icon">🎵</span>
+                <span class="select-card-title">Pop</span>
+              </div>
+              <div class="select-card genre-card" data-val="Hip-Hop">
+                <span class="select-card-icon">🎤</span>
+                <span class="select-card-title">Hip-Hop</span>
+              </div>
+              <div class="select-card genre-card" data-val="Rock">
+                <span class="select-card-icon">🎸</span>
+                <span class="select-card-title">Rock</span>
+              </div>
+              <div class="select-card genre-card" data-val="EDM">
+                <span class="select-card-icon">🎧</span>
+                <span class="select-card-title">EDM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 7: Avatar Selection & Customization -->
+          <div class="onboarding-step" id="ob-step-7">
+            <h3 style="font-family:var(--font-cyber); margin-bottom:1rem; color:var(--neon-cyan);">Step 7: Initialize Companion Twin</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem;">Select your companion's configuration. Your digital twin will adapt dynamically as you log real progress.</p>
+            
+            <div class="avatar-selection-layout" style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;">
+              <!-- Left: Controls -->
+              <div style="display:flex; flex-direction:column; gap:1rem;">
+                <!-- 1. Gender Selection -->
+                <div>
+                  <label class="form-label" style="margin-bottom:0.4rem; font-size:0.8rem; font-family:var(--font-cyber);">1. CHOOSE GENDER</label>
+                  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+                    <button type="button" class="btn btn-secondary select-gender-btn active" data-gender="female" style="padding:0.5rem; font-size:0.8rem;">Female ♀</button>
+                    <button type="button" class="btn btn-secondary select-gender-btn" data-gender="male" style="padding:0.5rem; font-size:0.8rem;">Male ♂</button>
+                  </div>
+                </div>
+                
+                <!-- 2. Body Type Selection -->
+                <div>
+                  <label class="form-label" style="margin-bottom:0.4rem; font-size:0.8rem; font-family:var(--font-cyber);">2. SELECT BODY TYPE</label>
+                  <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:0.4rem;">
+                    <button type="button" class="btn btn-secondary select-bodytype-btn" data-body="skinny" style="padding:0.4rem; font-size:0.75rem;">Skinny</button>
+                    <button type="button" class="btn btn-secondary select-bodytype-btn active" data-body="lean" style="padding:0.4rem; font-size:0.75rem;">Lean</button>
+                    <button type="button" class="btn btn-secondary select-bodytype-btn" data-body="fit" style="padding:0.4rem; font-size:0.75rem;">Fit</button>
+                    <button type="button" class="btn btn-secondary select-bodytype-btn" data-body="plus" style="padding:0.4rem; font-size:0.75rem;">Plus</button>
+                  </div>
+                </div>
+                
+                <!-- 3. Skin Tone Selection -->
+                <div>
+                  <label class="form-label" style="margin-bottom:0.4rem; font-size:0.8rem; font-family:var(--font-cyber);">3. CHOOSE SKIN TONE</label>
+                  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:0.4rem;">
+                    <button type="button" class="btn btn-secondary select-skin-btn" data-skin="light" style="padding:0.4rem; font-size:0.75rem;">Light</button>
+                    <button type="button" class="btn btn-secondary select-skin-btn active" data-skin="medium" style="padding:0.4rem; font-size:0.75rem;">Medium</button>
+                    <button type="button" class="btn btn-secondary select-skin-btn" data-skin="dark" style="padding:0.4rem; font-size:0.75rem;">Dark</button>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right: Preview Card -->
+              <div class="glass-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.5rem; min-height:280px; position:relative; overflow:hidden;">
+                <!-- Futuristic Scanner line overlay -->
+                <div class="avatar-scanner-line" style="position:absolute; width:100%; height:2px; background:var(--neon-cyan); top:0; left:0; opacity:0.7; z-index:5; box-shadow:0 0 8px var(--neon-cyan); pointer-events:none;"></div>
+                
+                <div class="avatar-preview-box" id="onboardingAvatarPreview" style="width:160px; height:220px; border-radius:8px; overflow:hidden; border:1px solid rgba(0,240,255,0.15); box-shadow:0 0 15px rgba(0,240,255,0.1); background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+                  <!-- Cropped image rendered here -->
+                </div>
+                <div style="margin-top:0.75rem; text-align:center; z-index:2;">
+                  <span id="onboardingAvatarLabel" style="font-family:var(--font-cyber); font-size:0.8rem; color:var(--neon-cyan); letter-spacing:0.5px; text-transform:uppercase;">LEAN FEMALE - MEDIUM SKIN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Onboarding Control Buttons -->
+          <div class="onboarding-buttons">
+            <button class="btn btn-secondary" id="btnOnboardingPrev" style="display: none;">⇠ Back</button>
+            <button class="btn btn-secondary" id="btnOnboardingNext" style="margin-left: auto;">Continue →</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==========================================
+         VIEW 3: MAIN SYSTEM DASHBOARD FRAMEWORK
+         ========================================== -->
+    <div id="view-dashboard" class="view-container">
+      <div class="dashboard-grid">
+        
+        <!-- Left panel navigation sidebar -->
+        <aside class="dash-sidebar">
+          
+          <!-- Quick User Summary -->
+          <div class="user-quick-profile">
+            <div class="user-quick-avatar" id="dashUserAvatar">
+              <!-- SVG body template rendered via app.js -->
+              🤖
+            </div>
+            <div class="user-quick-details">
+              <h3 id="dashUserName">Sovereign</h3>
+              <p id="levelVal">LEVEL 1</p>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">XP: <span id="xpVal" style="color: var(--neon-purple); font-weight: bold;">150</span></p>
+            </div>
+          </div>
+
+          <!-- System Navigation Links -->
+          <nav class="dash-menu">
+            <div class="dash-menu-item active" data-tab="tab-home">
+              <span class="dash-menu-item-icon">📊</span>
+              <span data-t="menu_dash">Dashboard</span>
+            </div>
+            <div class="dash-menu-item" data-tab="tab-plan">
+              <span class="dash-menu-item-icon">🏋️</span>
+              <span data-t="menu_plan">AI Workout Planner</span>
+            </div>
+            <div class="dash-menu-item" data-tab="tab-diet">
+              <span class="dash-menu-item-icon">🥗</span>
+              <span>AI Diet Planner</span>
+            </div>
+            <div class="dash-menu-item" data-tab="tab-coach">
+              <span class="dash-menu-item-icon">🤖</span>
+              <span data-t="menu_coach">AI Fitness Coach</span>
+            </div>
+            <div class="dash-menu-item" data-tab="tab-avatar">
+              <span class="dash-menu-item-icon">🎨</span>
+              <span data-t="menu_avatar">Evolving Avatar</span>
+            </div>
+            <div class="dash-menu-item" data-tab="tab-knowledge">
+              <span class="dash-menu-item-icon">📖</span>
+              <span data-t="menu_knowledge">Today's Knowledge</span>
+            </div>
+            <div class="dash-menu-item" data-tab="tab-music">
+              <span class="dash-menu-item-icon">🎵</span>
+              <span data-t="menu_music">Music & Motivation</span>
+            </div>
+            <div class="dash-menu-item" data-tab="tab-settings">
+              <span class="dash-menu-item-icon">⚙️</span>
+              <span data-t="menu_settings">Settings</span>
+            </div>
+          </nav>
+        </aside>
+
+        <!-- Right panel content workspace -->
+        <main class="dash-content">
+          
+          <!-- TAB 1: DASHBOARD OVERVIEW -->
+          <section class="dash-pane active" id="tab-home">
+            <div style="display:flex; flex-direction:column; gap:2rem;">
+              
+              <!-- AI Coach Avatar Banner Greeting -->
+              <div class="coach-greeting-banner">
+                <div class="coach-banner-avatar-box" id="coachBannerAvatar">
+                  <!-- Waving avatar template loaded dynamically -->
+                </div>
+                <div class="coach-speech-bubble">
+                  <h3 id="coachBubbleTitle">Good Morning, Fighter!</h3>
+                  <p id="coachBubbleText">"System synchronization verified. Today's training target is active. Select your workout parameters and stay hydrated!"</p>
+                </div>
+              </div>
+
+              <!-- Quick Stats row -->
+              <div class="metrics-row">
+                <!-- Weight metric -->
+                <div class="glass-card metric-card glow-cyan">
+                  <div class="metric-icon-box">⚖️</div>
+                  <div class="metric-info">
+                    <h4 data-t="weight">Current Weight</h4>
+                    <p id="currWeight">-- kg</p>
+                    <span>Target: <span id="targetWeight" style="color:var(--neon-cyan);">-- kg</span></span>
+                  </div>
+                </div>
+
+                <!-- BMI calculations -->
+                <div class="glass-card metric-card glow-purple">
+                  <div class="metric-icon-box">🧠</div>
+                  <div class="metric-info">
+                    <h4 data-t="stat_bmi">BMI</h4>
+                    <p id="bmiVal">--</p>
+                    <span id="bmiStatus" style="color: var(--neon-purple);">Normal weight</span>
+                  </div>
+                </div>
+
+                <!-- Calories tracker -->
+                <div class="glass-card metric-card glow-green">
+                  <div class="metric-icon-box">⚡</div>
+                  <div class="metric-info">
+                    <h4>Daily Calories</h4>
+                    <p id="caloriesConsumed">0 kcal</p>
+                    <span>Burned: <span id="caloriesBurned" style="color: var(--neon-green);">0 kcal</span></span>
+                  </div>
+                </div>
+
+                <!-- Body Index and progress -->
+                <div class="glass-card metric-card glow-gold" style="border-color: rgba(255, 170, 0, 0.15);">
+                  <div class="metric-icon-box">📊</div>
+                  <div class="metric-info">
+                    <h4>Body Index</h4>
+                    <p><span id="bodyFatVal">--</span>% Fat</p>
+                    <span>Goal: <span id="goalCompletionVal" style="color: var(--neon-gold); font-weight: bold;">--%</span></span>
+                  </div>
+                </div>
+
+                <!-- Daily Streak system -->
+                <div class="glass-card metric-card glow-rose">
+                  <div class="metric-icon-box">🔥</div>
+                  <div class="metric-info">
+                    <h4 data-t="stat_streak">Daily Streak</h4>
+                    <p id="streakVal">0 Days</p>
+                    <span>Last Active: <span id="lastWorkoutDateVal" style="color: var(--neon-rose);">None</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trackers visual column (Water Log Cylinder + Streak visual) -->
+              <div class="trackers-section">
+                <!-- Water Cylinder tracking card -->
+                <div class="glass-card" style="display:flex; flex-direction:column; align-items:center; gap:1.5rem; justify-content:center;">
+                  <h4 data-t="stat_water" style="font-family:var(--font-cyber); align-self:flex-start;">Water Intake</h4>
+                  <div class="water-tracker-visual">
+                    <div class="water-cylinder">
+                      <div class="water-percent-overlay" id="waterPercentText">0%</div>
+                      <div class="water-fill" id="waterFill"></div>
+                    </div>
+                    <span id="waterMetricText" style="font-family:var(--font-cyber); font-size:0.95rem;">0 / 2500 ml</span>
+                    <div class="water-buttons">
+                      <button class="btn btn-cyber-outline" id="btnWater250" data-t="quick_log_water">Log 250ml</button>
+                      <button class="btn btn-secondary" id="btnWaterReset" data-t="quick_log_reset">Reset Logs</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- XP and badges indicator -->
+                <div class="glass-card">
+                  <h4 data-t="achievements_title" style="font-family:var(--font-cyber); margin-bottom:1rem;">Unlocked Milestones</h4>
+                  <div class="badges-showcase" id="achievementsShowcase">
+                    <!-- Loaded dynamically via app.js -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- SVG weight tracker visual progression chart -->
+              <div class="glass-card" style="display:grid; grid-template-columns: 2.2fr 1fr; gap:1.5rem;" id="progressChartCard">
+                <div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+                    <h4 data-t="progress_chart_title" style="font-family:var(--font-cyber); margin:0;">Weight Progression</h4>
+                    <div class="chart-toggle" style="display:flex; gap:0.25rem; background:rgba(255,255,255,0.03); padding:0.25rem; border-radius:30px; border:1px solid var(--border-glass);">
+                      <button class="btn btn-secondary btn-xs active" id="btnWeeklyChart" style="padding:0.25rem 0.75rem; font-size:0.75rem; border-radius:20px; border:none; background:var(--grad-primary); color:white; cursor:pointer;">Weekly</button>
+                      <button class="btn btn-secondary btn-xs" id="btnMonthlyChart" style="padding:0.25rem 0.75rem; font-size:0.75rem; border-radius:20px; border:none; background:transparent; color:var(--text-muted); cursor:pointer;">Monthly</button>
+                    </div>
+                  </div>
+                  <div class="chart-container" id="weightChartBox">
+                    <!-- Custom SVG charts rendered here -->
+                  </div>
+                </div>
+                <!-- Evolving visual profile comparison -->
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-left:1px solid rgba(255,255,255,0.05); padding-left:1rem; text-align:center;">
+                  <span style="font-size:0.75rem; text-transform:uppercase; color:var(--neon-cyan); font-family:var(--font-cyber); display:block; margin-bottom:0.5rem;">PHYSICAL MODEL</span>
+                  <div id="progressAvatarContainer" style="width:75px; height:110px; border-radius:6px; overflow:hidden; border:1px solid rgba(0,240,255,0.15); background:rgba(0,0,0,0.2);"></div>
+                  <span style="font-size:0.7rem; color:var(--text-muted); margin-top:0.4rem; font-weight:bold;">TGT SHAPE</span>
+                </div>
+              </div>
+
+              <!-- FitVerse Global Leaderboard Card -->
+              <div class="glass-card">
+                <h4 style="font-family:var(--font-cyber); margin-bottom:1.2rem; color:var(--neon-cyan);">FitVerse Global Leaderboard</h4>
+                <div id="leaderboardList" style="display:flex; flex-direction:column; gap:0.75rem;">
+                  <!-- Leaderboard rows loaded dynamically -->
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="dash-pane" id="tab-plan">
+            <div style="display:flex; flex-direction:column; gap:2rem;">
+              <div class="plans-header">
+                <div class="cyber-badge" style="margin-bottom:0;">GENERATIVE PLAN CODES</div>
+              </div>
+
+              <!-- Workout splitting sub-pane -->
+              <div id="planWorkoutSection">
+                <div style="display:grid; grid-template-columns: 1fr 2fr; gap:1.5rem; margin-bottom:1.5rem;" class="workout-companion-grid">
+                  <!-- Left: Evolving Companion Card -->
+                  <div class="glass-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1rem; text-align:center;">
+                    <span style="font-size:0.75rem; text-transform:uppercase; color:var(--neon-cyan); font-family:var(--font-cyber); display:block; margin-bottom:0.5rem;">COMPANION STATUS</span>
+                    <div id="workoutAvatarContainer" style="width:75px; height:110px; border-radius:6px; overflow:hidden; border:1px solid rgba(0,240,255,0.15); background:rgba(0,0,0,0.2);"></div>
+                    <span id="workoutAvatarCaption" style="font-size:0.7rem; color:var(--text-muted); margin-top:0.4rem; font-weight:bold;">READY</span>
+                  </div>
+                  <!-- Right: Quick Advice -->
+                  <div class="glass-card" style="display:flex; flex-direction:column; justify-content:center; padding:1.2rem;">
+                    <h5 style="font-family:var(--font-cyber); margin-bottom:0.5rem; color:var(--neon-green);">COACH INTEL</h5>
+                    <p style="font-size:0.8rem; line-height:1.4; color:var(--text-muted); margin:0;">"To maximize performance, complete each protocol with slow negative tempo control. Your digital twin tracks and matches your biomechanical output."</p>
+                  </div>
+                </div>
+
+                <div class="glass-card">
+                  <h4 style="font-family:var(--font-cyber); margin-bottom:1rem;">Weekly Workout Schedule</h4>
+                  <!-- Stepper Day Selector Navigation -->
+                  <div class="weekly-days-nav" id="workoutDaysNav">
+                    <!-- Day chips generated here -->
+                  </div>
+                  <div class="exercises-list" id="exerciseContainer">
+                    <!-- Exercises generated here -->
+                  </div>
+                  <!-- Biomechanical Exercise Visualizer -->
+                  <div class="exercise-demo-container" id="exerciseDemoFrame" style="display: none;">
+                    <h5 style="font-family: var(--font-cyber); color: var(--neon-cyan); margin-bottom: 0.75rem;">BIOMECHANICS SIMULATION</h5>
+                    <div class="exercise-demo-box" id="exerciseDemoBox"></div>
+                    <p id="exerciseDemoInstructions" style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; line-height: 1.4;"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TAB 2.5: AI DIET PLANNER -->
+          <section class="dash-pane" id="tab-diet">
+            <div style="display:flex; flex-direction:column; gap:2rem;">
+              <div class="plans-header">
+                <div class="cyber-badge" style="margin-bottom:0;">GENERATIVE NUTRITION CODES</div>
+              </div>
+
+              <!-- Diet meal scheduling sub-pane -->
+              <div id="planDietSection">
+                <!-- 1. Targets & Macro charts panel -->
+                <div class="glass-card diet-dashboard-header" style="margin-bottom:1.5rem; display:grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 1.5rem;">
+                  <!-- Left: Macro grid targets -->
+                  <div>
+                    <h4 style="font-family:var(--font-cyber); margin-bottom:1rem; color:var(--neon-cyan);">Daily Nutrition Targets</h4>
+                    <div class="diet-targets-wrapper" style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;">
+                      <div class="macro-target-card" style="border-left:3px solid var(--neon-cyan);">
+                        <span class="macro-title">Calories</span>
+                        <span class="macro-value" id="dietCalTarget">0 kcal</span>
+                      </div>
+                      <div class="macro-target-card" style="border-left:3px solid var(--neon-rose);">
+                        <span class="macro-title">Protein</span>
+                        <span class="macro-value" id="dietProteinTarget">0g</span>
+                      </div>
+                      <div class="macro-target-card" style="border-left:3px solid var(--neon-green);">
+                        <span class="macro-title">Carbs</span>
+                        <span class="macro-value" id="dietCarbTarget">0g</span>
+                      </div>
+                      <div class="macro-target-card" style="border-left:3px solid #f59e0b;">
+                        <span class="macro-title">Fats</span>
+                        <span class="macro-value" id="dietFatTarget">0g</span>
+                      </div>
+                    </div>
+                    
+                    <!-- Hydration block -->
+                    <div class="glass-card water-tracker-card" style="margin-top: 1rem; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; background: rgba(0,240,255,0.03); border: 1px solid rgba(0,240,255,0.15);">
+                      <div style="display:flex; align-items:center; gap: 0.75rem;">
+                        <span style="font-size: 1.75rem;">💧</span>
+                        <div>
+                          <span style="display:block; font-size:0.75rem; color:var(--text-muted);">Daily Hydration Goal</span>
+                          <span style="font-weight:bold; font-size:1rem; color:var(--neon-cyan);" id="dietWaterTarget">0 ml</span>
+                        </div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap: 0.5rem;">
+                        <button class="btn btn-secondary" style="padding:0.25rem 0.5rem; font-size:0.75rem;" id="btnLogWaterGlass">+250ml</button>
+                        <button class="btn btn-secondary" style="padding:0.25rem 0.5rem; font-size:0.75rem;" id="btnResetDietWater">Reset</button>
+                      </div>
+                      <div style="text-align: right;">
+                        <span style="display:block; font-size:0.75rem; color:var(--text-muted);">Today Logged</span>
+                        <span style="font-weight:bold; font-size:1rem; color:white;" id="loggedDietWater">0 / 2500 ml</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Middle: Evolving Companion Card -->
+                  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-left: 1px solid rgba(255,255,255,0.05); padding-left: 1rem; text-align:center;">
+                    <span style="font-size:0.7rem; text-transform:uppercase; color:var(--text-muted); font-family:var(--font-cyber); display:block; margin-bottom:0.25rem;">METABOLIC TWIN</span>
+                    <div id="dietAvatarContainer" style="width:70px; height:100px; border-radius:6px; overflow:hidden; border:1px solid rgba(0,240,255,0.15); background:rgba(0,0,0,0.2);"></div>
+                  </div>
+                  
+                  <!-- Right: Inline SVG Donut Chart -->
+                  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; border-left: 1px solid rgba(255,255,255,0.05); padding-left: 1rem;">
+                    <div id="dietMacroChartBox" style="width:120px; height:120px;">
+                      <!-- SVG Donut Chart generated dynamically -->
+                    </div>
+                    <div style="display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; font-size:0.65rem; margin-top: 0.5rem;">
+                      <span style="color:var(--neon-rose); font-weight:bold;">● Pro</span>
+                      <span style="color:var(--neon-green); font-weight:bold;">● Carb</span>
+                      <span style="color:#f59e0b; font-weight:bold;">● Fat</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Reminders & Grocery aggregation drawer -->
+                <div class="diet-sub-panels" style="display:grid; grid-template-columns: 1fr 1.5fr; gap: 1.5rem; margin-bottom:1.5rem;">
+                  <!-- Reminders panel -->
+                  <div class="glass-card reminders-panel" style="padding: 1rem;">
+                    <h5 style="font-family:var(--font-cyber); color:var(--neon-cyan); margin-bottom:0.75rem; font-size:0.9rem;">DAILY ALERTS</h5>
+                    <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.85rem;">
+                      <div style="display:flex; justify-content:space-between; align-items:center; background: rgba(255,255,255,0.02); padding: 0.5rem; border-radius: 6px;">
+                        <span>Mealtime Prompts</span>
+                        <label class="switch-tgl">
+                          <input type="checkbox" id="tglMealReminders">
+                          <span class="slider-tgl"></span>
+                        </label>
+                      </div>
+                      <div style="display:flex; justify-content:space-between; align-items:center; background: rgba(255,255,255,0.02); padding: 0.5rem; border-radius: 6px;">
+                        <span>Hourly Water Chime</span>
+                        <label class="switch-tgl">
+                          <input type="checkbox" id="tglWaterReminders">
+                          <span class="slider-tgl"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Grocery List panel -->
+                  <div class="glass-card grocery-panel" style="padding: 1rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                      <h5 style="font-family:var(--font-cyber); color:var(--neon-cyan); font-size:0.9rem; margin:0;">PLAN GROCERY BASKET</h5>
+                      <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem;" id="btnGenerateGroceryList">Refresh Basket</button>
+                    </div>
+                    <div class="grocery-scroll-container" id="groceryBasketList" style="max-height:85px; overflow-y:auto; font-size:0.8rem; display:flex; flex-direction:column; gap:0.4rem; padding-right:0.25rem;">
+                      <!-- Checked items dynamically populated -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Diet meals grid -->
+                <div class="diet-meals-grid" id="dietMealsGrid">
+                  <!-- Diet plans generated here -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TAB 3: AI FITNESS COACH CHATBOT -->
+          <section class="dash-pane" id="tab-coach">
+            <div class="chatbot-workspace">
+              <div class="glass-card chatbot-card">
+                <!-- Header -->
+                <div class="chatbot-header">
+                  <div class="coach-info">
+                    <div class="coach-status-dot"></div>
+                    <h4 style="font-family:var(--font-cyber);" data-t="chat_header">AI Fitness Command</h4>
+                  </div>
+                  <span style="font-size:0.8rem; color:var(--text-muted);">Model: Gemini-3.5-Adaptive</span>
+                </div>
+
+                <!-- Chat message history scroll box -->
+                <div class="chat-history-box" id="chatHistoryContainer">
+                  <div class="chat-msg bot">
+                    <div class="chat-msg-avatar">🤖</div>
+                    <div class="chat-msg-bubble">Greeting Recieved! State your target objective, and I will analyze the metrics.</div>
+                  </div>
+                </div>
+
+                <!-- Suggestion Chips -->
+                <div class="chat-suggestion-chips" id="chatSuggestionChips">
+                  <div class="suggestion-chip" data-query="Suggest a chest workout">🏋️ Chest Routine</div>
+                  <div class="suggestion-chip" data-query="Suggest a clean diet plan">🥦 Clean Diet</div>
+                  <div class="suggestion-chip" data-query="Give me motivation for today">🔥 Get Motivated</div>
+                  <div class="suggestion-chip" data-query="How can I lose fat effectively?">🏃 Fat Loss Tips</div>
+                </div>
+
+                <!-- Input box and triggers -->
+                <div class="chat-input-bar">
+                  <input type="text" id="chatInput" class="chat-input" placeholder="Ask Coach anything (e.g. 'Give chest exercises' or 'Motivate me')..." data-t="chat_placeholder">
+                  <button class="btn btn-primary" id="btnSendChat">Send ➔</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TAB 4: PERSONALIZED EVOLVING AVATAR -->
+          <section class="dash-pane" id="tab-avatar">
+            <div class="avatar-workspace">
+              <!-- Left side: Interactive SVG renderer -->
+              <div class="glass-card avatar-viewer-panel">
+                <h4 style="font-family:var(--font-cyber); align-self:flex-start; margin-bottom:1.5rem;">Digital Twin Avatar</h4>
+                
+                <div class="avatar-display-box" id="avatarDisplayContainer">
+                  <!-- Rendered dynamically by app.js using SVG elements -->
+                </div>
+                
+                <div class="avatar-stats-row" style="display:flex; flex-direction:column; gap:1.2rem; width:100%; border-top:1px solid var(--border-glass); padding-top:1.5rem; margin-top:1.5rem;">
+                  <h5 style="font-family:var(--font-cyber); color:var(--neon-cyan); letter-spacing:1.5px; margin-bottom:0.2rem;">TRANSFORMATION DNA</h5>
+                  
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; font-size:0.85rem;">
+                    <div>
+                      <span class="avatar-stat-lbl">Body Twin Shape</span>
+                      <div id="avatarBodyType" style="font-weight:bold; color:white; margin-top:0.25rem;">Lean Fit</div>
+                    </div>
+                    <div>
+                      <span class="avatar-stat-lbl">Spinal Posture</span>
+                      <div id="avatarPosture" style="font-weight:bold; color:#10b981; margin-top:0.25rem;">Upright</div>
+                    </div>
+                  </div>
+                  
+                  <div style="width:100%;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:0.35rem;">
+                      <span class="avatar-stat-lbl">Goal Progression</span>
+                      <span id="transformationPct" style="font-weight:bold; color:var(--neon-cyan);">0% Complete</span>
+                    </div>
+                    <div class="avatar-xp-bar-outer" style="height:10px; margin-top:0;">
+                      <div class="avatar-xp-bar-inner" id="avatarXpFill" style="background:var(--grad-primary); box-shadow:0 0 8px var(--neon-cyan); width:0%;"></div>
+                    </div>
+                  </div>
+
+                  <div id="avatarStatsDetail" style="font-size: 0.8rem; line-height: 1.5; color:var(--text-muted); padding:0.75rem; background:rgba(0,0,0,0.2); border-radius:8px; border:1px solid var(--border-glass);">
+                    <!-- Loaded dynamically -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right side: Edit features selectors (clothing, hair, goggles) -->
+              <div class="glass-card avatar-editor-panel">
+                <h4 style="font-family:var(--font-cyber); margin-bottom:1rem;">Customize Digital Twin</h4>
+                <!-- Category sub-tabs -->
+                <div class="editor-category-tabs" id="avatarCategoryTabs">
+                  <button class="editor-category-btn active" data-category="face">Face & Skin</button>
+                  <button class="editor-category-btn" data-category="eyes">Eyes & Brows</button>
+                  <button class="editor-category-btn" data-category="hair">Hair & Beard</button>
+                  <button class="editor-category-btn" data-category="outfit">Clothing</button>
+                  <button class="editor-category-btn" data-category="accessory">Accessories</button>
+                  <button class="editor-category-btn" data-category="expression">Expressions</button>
+                </div>
+                <div class="editor-options-box" id="avatarEditorOptions">
+                  <!-- Options generated dynamically -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TAB 5: TODAY'S KNOWLEDGE SECTION -->
+          <section class="dash-pane" id="tab-knowledge">
+            <div class="knowledge-grid" id="knowledgeContainer">
+              <!-- Grid items populated dynamically via app.js -->
+            </div>
+          </section>
+
+          <!-- TAB 6: MUSIC AND MOTIVATION ZONE -->
+          <section class="dash-pane" id="tab-music">
+            <!-- Music Search Bar & Custom Playlist Controls -->
+            <div class="glass-card" style="padding:1rem; margin-bottom:1.5rem; border-color: rgba(0, 240, 255, 0.2);">
+              <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+                <div style="flex:1; min-width:240px; position:relative;">
+                  <input type="text" id="musicSearchInput" class="form-input" placeholder="🔍 Search song, singer, album, genre, language, mood..." style="width:100%; padding-left:1rem;" oninput="onMusicSearchChange(this.value)">
+                </div>
+                <div style="display:flex; gap:0.5rem;">
+                  <button class="btn btn-primary" id="btnCreatePlaylist" style="padding:0.4rem 0.9rem; font-size:0.8rem;" onclick="createNewUserPlaylist()">+ Create Playlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="music-workspace-filters" style="display:flex; gap:1rem; margin-bottom:1.5rem;">
+              <div style="flex:1;">
+                <label class="form-label" style="font-size:0.75rem;">Filter by Vibe Mood</label>
+                <select id="musicMoodFilter" class="custom-select">
+                  <option value="all">All Moods</option>
+                  <option value="Motivated">Motivated</option>
+                  <option value="Happy">Happy</option>
+                  <option value="Excited">Excited</option>
+                  <option value="Low Energy">Low Energy</option>
+                </select>
+              </div>
+              <div style="flex:1;">
+                <label class="form-label" style="font-size:0.75rem;">Filter by Lyric Language</label>
+                <select id="musicLangFilter" class="custom-select">
+                  <option value="all">All Languages</option>
+                  <option value="en">English (Pop/EDM)</option>
+                  <option value="hi">Hindi (Bollywood)</option>
+                  <option value="gu">Gujarati (Regional)</option>
+                  <option value="es">Spanish (Cardio)</option>
+                  <option value="ja">Japanese (J-Rock)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Curated Mixes Selectors -->
+            <div class="music-mixes-row" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; justify-content:center;">
+              <button class="mix-pill active" id="mix-pill-all" onclick="selectMusicMix('all')">All Tracks</button>
+              <button class="mix-pill" id="mix-pill-today" onclick="selectMusicMix('today')">Today's Workout Mix</button>
+              <button class="mix-pill" id="mix-pill-muscle_gain" onclick="selectMusicMix('muscle_gain')">Muscle Gain Mix</button>
+              <button class="mix-pill" id="mix-pill-fat_loss" onclick="selectMusicMix('fat_loss')">Fat Loss Mix</button>
+              <button class="mix-pill" id="mix-pill-morning" onclick="selectMusicMix('morning')">Morning Motivation Mix</button>
+              <button class="mix-pill" id="mix-pill-evening" onclick="selectMusicMix('evening')">Evening Recovery Mix</button>
+            </div>
+
+            <div class="music-workspace">
+              <!-- Left column: Audio Player Deck -->
+              <div class="glass-card music-player-panel" style="display:flex; flex-direction:column; align-items:center;">
+                <div class="vinyl-record-disc" id="musicDisc">
+                  <!-- Vinyl spinner visual -->
+                </div>
+                
+                <div class="now-playing-info" style="text-align:center; width:100%;">
+                  <h4 class="now-playing-title" id="npTitle" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Vibe Generator</h4>
+                  <p class="now-playing-artist" id="npArtist">Select a track</p>
+                  <div class="now-playing-tag" id="npTag">Vibe: Active</div>
+                  
+                  <!-- Smart Feedback likes/dislikes -->
+                  <div style="display:flex; gap:0.5rem; justify-content:center; margin-top:0.75rem;">
+                    <button class="btn btn-secondary btn-xs" id="musicLikeBtn" onclick="likeCurrentTrack()" style="padding:0.25rem 0.5rem; font-size:0.7rem; border-radius:4px; font-weight:bold;">❤️ Like</button>
+                    <button class="btn btn-secondary btn-xs" id="musicDislikeBtn" onclick="dislikeCurrentTrack()" style="padding:0.25rem 0.5rem; font-size:0.7rem; border-radius:4px; font-weight:bold;">👎 Skip/Dislike</button>
+                  </div>
+                </div>
+
+                <!-- Progress indicators (Seekable Range Slider) -->
+                <div class="music-slider-container" style="margin-top:1rem; width:100%;">
+                  <input type="range" id="musicSeekRange" class="music-seek-range" value="0" min="0" max="100" style="width:100%; cursor:pointer; accent-color:var(--neon-cyan);">
+                  <div class="music-progress-time" style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">
+                    <span id="musicTimeCurrent">0:00</span>
+                    <span id="musicTimeDuration">0:00</span>
+                  </div>
+                </div>
+
+                <!-- Controls layout -->
+                <div class="music-controls" style="display:flex; align-items:center; gap:0.75rem; justify-content:center; margin-top:1rem; width:100%;">
+                  <button class="btn btn-icon" id="musicShuffleBtn" onclick="toggleShuffle()" title="Shuffle" style="font-size:1.1rem; padding:0.4rem; background:transparent; border:none; cursor:pointer;">🔀</button>
+                  <button class="btn btn-icon" onclick="prevTrack()" title="Previous" style="font-size:1.1rem; padding:0.4rem; background:transparent; border:none; cursor:pointer;">⏮️</button>
+                  <button class="btn btn-primary" id="musicPlayBtn" onclick="togglePlay()" style="border-radius:50px; min-width:110px; font-size:0.9rem; padding:0.5rem 1rem;">▶️ Play</button>
+                  <button class="btn btn-icon" onclick="nextTrack()" title="Next" style="font-size:1.1rem; padding:0.4rem; background:transparent; border:none; cursor:pointer;">⏭️</button>
+                  <button class="btn btn-icon" id="musicRepeatBtn" onclick="toggleRepeat()" title="Repeat Off" style="font-size:1.1rem; padding:0.4rem; background:transparent; border:none; cursor:pointer;">🔁</button>
+                </div>
+
+                <!-- Volume control -->
+                <div class="volume-control-box" style="display:flex; align-items:center; gap:0.5rem; justify-content:center; margin-top:1rem; width:100%; max-width:180px;">
+                  <span style="font-size:0.8rem; color:var(--text-muted);">🔊</span>
+                  <input type="range" id="musicVolumeSlider" min="0" max="1" step="0.05" value="0.5" style="width:100%; cursor:pointer; accent-color:var(--neon-cyan); height:4px; border-radius:2px;">
+                </div>
+              </div>
+
+              <!-- Right column: Catalog & Custom Workout Playlist -->
+              <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                <!-- Catalog list -->
+                <div class="glass-card playlist-panel-box" style="padding: 1.5rem;">
+                  <div class="playlist-header">
+                    <h4 style="font-family:var(--font-cyber); font-size:1.1rem;">Ecosystem Catalog</h4>
+                    <span style="font-size:0.75rem; color:var(--neon-cyan);" id="catalogCountText">0 Tracks</span>
+                  </div>
+                  <div class="playlist-tracks-container" id="playlistContainer" style="max-height: 200px;">
+                    <!-- Available tracks loaded dynamically -->
+                  </div>
+                </div>
+
+                <!-- Custom Workout Playlist list -->
+                <div class="glass-card playlist-panel-box" style="padding: 1.5rem; border-color: rgba(189, 0, 255, 0.3);">
+                  <div class="playlist-header">
+                    <h4 style="font-family:var(--font-cyber); font-size:1.1rem; color:var(--neon-purple);">My Workout Playlist 🔥</h4>
+                    <span style="font-size:0.75rem; color:var(--neon-purple);" id="playlistCountText">0 Tracks</span>
+                  </div>
+                  <div class="playlist-tracks-container" id="workoutPlaylistContainer" style="max-height: 200px;">
+                    <!-- User custom playlist loaded dynamically -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TAB 7: SETTINGS & PREFERENCES -->
+          <section class="dash-pane" id="tab-settings">
+            <div class="settings-section">
+              <div class="settings-grid">
+                
+                <!-- System settings -->
+                <div class="glass-card settings-card">
+                  <h4 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Visual Theme</h4>
+                  <div class="settings-toggle-row">
+                    <span data-t="dark_mode">Dark Theme</span>
+                    <label class="toggle-switch-wrapper">
+                      <input type="checkbox" id="themeToggle" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Audio settings -->
+                <div class="glass-card settings-card">
+                  <h4 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Voice Systems (Web Speech API)</h4>
+                  <div class="settings-toggle-row">
+                    <span data-t="voice_commands">Voice Commands (Speech-to-Text)</span>
+                    <label class="toggle-switch-wrapper">
+                      <input type="checkbox" id="voiceCommandsToggle">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="settings-toggle-row" style="margin-top: 1rem;">
+                    <span data-t="voice_feedback">Voice Synthesizer (Text-to-Speech)</span>
+                    <label class="toggle-switch-wrapper">
+                      <input type="checkbox" id="voiceFeedbackToggle">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Metric/Lang settings -->
+                <div class="glass-card settings-card">
+                  <h4 style="font-family:var(--font-cyber); margin-bottom:1.5rem;">Locales & Metrics</h4>
+                  <div class="form-group">
+                    <label class="form-label" data-t="preferred_lang">Interface Language</label>
+                    <select id="settingsLanguage" class="custom-select">
+                      <option value="en">English (EN)</option>
+                      <option value="es">Español (ES)</option>
+                      <option value="hi">हिन्दी (HI)</option>
+                      <option value="gu">ગુજરાતી (GU)</option>
+                      <option value="ja">日本語 (JA)</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin-top: 1rem;">
+                    <label class="form-label" data-t="preferred_units">Preferred Units</label>
+                    <select id="settingsUnits" class="custom-select">
+                      <option value="metric">Metric (kg / cm)</option>
+                      <option value="imperial">Imperial (lbs / inches)</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin-top: 1rem;">
+                    <label class="form-label">Budget Preference</label>
+                    <select id="settingsBudget" class="custom-select">
+                      <option value="low">Low Budget (Affordable)</option>
+                      <option value="moderate">Moderate (Standard Healthy)</option>
+                      <option value="premium">Premium (Organic/Specialty)</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin-top: 1rem;">
+                    <label class="form-label">Activity Level</label>
+                    <select id="settingsActivity" class="custom-select">
+                      <option value="sedentary">Sedentary (Little or no exercise)</option>
+                      <option value="lightly_active">Lightly Active (Exercise 1-3 days/week)</option>
+                      <option value="moderately_active">Moderately Active (Exercise 3-5 days/week)</option>
+                      <option value="very_active">Very Active (Exercise 6-7 days/week)</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voice commands listening display banner -->
+  <div class="speech-active-indicator" id="speechActiveIndicator">
+    <div class="listening-wave">
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+    </div>
+    <span data-t="speech_active">Listening to Voice Command...</span>
+  </div>
+
+  <!-- Float microphone activation button -->
+  <button class="voice-float-btn" id="voiceFloatBtn" title="Speak to FitVerse AI (Ctrl+Space)" aria-label="Speech command activator">
+    🎙️
+  </button>
+
+  <!-- App Toast Alerts Banner -->
+  <div class="app-alert-banner" id="appAlertBanner">
+    <div style="font-size: 1.5rem;">🛎️</div>
+    <div>
+      <div class="app-alert-title" id="appAlertTitle">System Status</div>
+      <div class="app-alert-msg" id="appAlertMsg">System boot sequence verified.</div>
+    </div>
+  </div>
+
+  <!-- Avatar Evolution Celebration Modal Overlay -->
+  <div class="evolution-overlay" id="evolutionOverlay" style="display: none;">
+    <div class="glass-card evolution-modal-card glow-cyan">
+      <!-- Confetti and scans -->
+      <div class="scanner-sweep"></div>
+      <div class="confetti-holder" id="confettiHolder"></div>
+      
+      <div class="cyber-badge" style="margin-bottom: 0.5rem;">COMPANION EVOLUTION UNLOCKED</div>
+      <h2 style="font-family: var(--font-cyber); color: var(--neon-cyan); margin-bottom: 1.5rem; text-shadow: 0 0 10px rgba(0,240,255,0.5);">EVOLUTION COMPLETE!</h2>
+      
+      <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+        <!-- Old State preview -->
+        <div style="text-align: center;">
+          <span style="font-size: 0.65rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">PREVIOUS SHAPE</span>
+          <div id="evoOldAvatarBox" style="width: 80px; height: 120px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); opacity: 0.6;"></div>
+          <span id="evoOldLabel" style="font-size: 0.7rem; color: var(--text-muted); font-weight: bold;">SKINNY</span>
+        </div>
+        
+        <div style="font-size: 2rem; color: var(--neon-cyan); transform: scaleX(1.3); font-weight: bold; animation: pulse-arrow 1s infinite alternate;">➔</div>
+        
+        <!-- New State preview -->
+        <div style="text-align: center;">
+          <span style="font-size: 0.65rem; color: var(--neon-cyan); display: block; margin-bottom: 0.25rem; font-weight: bold;">NEW EVOLVED FORM</span>
+          <div id="evoNewAvatarBox" style="width: 100px; height: 150px; border-radius: 6px; overflow: hidden; border: 2px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0,240,255,0.4); background: rgba(0,0,0,0.3); transform: scale(1.05);"></div>
+          <span id="evoNewLabel" style="font-size: 0.8rem; color: var(--neon-green); font-weight: bold; text-shadow: 0 0 5px rgba(16,185,129,0.3);">LEAN</span>
+        </div>
+      </div>
+      
+      <p id="evoMotivationMsg" style="font-size: 0.9rem; line-height: 1.5; color: var(--text-main); margin-bottom: 1.5rem; text-align: center; max-width: 400px; font-style: italic;">
+        "Congratulations! Your dedication has paid off. Your companion has successfully transitioned to Lean mode."
+      </p>
+      
+      <button class="btn btn-primary" id="btnDismissEvolution" style="padding: 0.6rem 2rem; font-family: var(--font-cyber); letter-spacing: 0.5px;">ACKNOWLEDGE ASCENSION ⚡</button>
+    </div>
+  </div>
+
+  <!-- Active Workout Session Timer Overlay with Dynamic Music Sync -->
+  <div id="workoutSessionOverlay" class="workout-session-overlay" style="display:none;">
+    <div class="glass-card session-card glow-cyan">
+      <div class="session-header">
+        <span class="cyber-badge">ACTIVE NEURAL SESSION</span>
+        <button class="close-session-btn" onclick="stopActiveWorkoutSession()">❌</button>
+      </div>
+      <h3 id="sessionFocusName">Push Routine</h3>
+      <div class="session-timer-display" id="sessionTimerText">00:00</div>
+      <div class="session-phase-tag" id="sessionPhaseTag">Peak Intensity</div>
+      <div class="session-progress-bar">
+        <div class="session-progress-fill" id="sessionProgressFill" style="width: 0%;"></div>
+      </div>
+      <p class="session-coach-tip" id="sessionCoachTip">"Keep pushing! High BPM EDM beats synced to your heart rate."</p>
+    </div>
+  </div>
+  <!-- Admin Dashboard Modal -->
+  <div id="adminPanelModal" class="evolution-overlay" style="display: none; z-index: 10000;">
+    <div class="glass-card glow-purple" style="max-width: 860px; width: 92%; max-height: 90vh; overflow-y: auto; padding: 2rem; border: 1px solid var(--neon-purple); background: rgba(13, 16, 27, 0.95);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; border-bottom:1px solid var(--border-glass); padding-bottom:1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span style="font-size:1.5rem;">👑</span>
+          <h3 style="font-family:var(--font-cyber); color:var(--neon-cyan); margin:0;">FITVERSE ADMIN COMMAND CENTER</h3>
+        </div>
+        <button class="btn btn-secondary" onclick="closeAdminPanel()" style="padding:0.3rem 0.75rem;">❌ Close</button>
+      </div>
+      <div class="editor-category-tabs" id="adminTabs" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+        <button class="editor-category-btn active" id="adminTabUsers" onclick="switchAdminTab('users')">👥 Users</button>
+        <button class="editor-category-btn" id="adminTabExercises" onclick="switchAdminTab('exercises')">🏋️ Exercises</button>
+        <button class="editor-category-btn" id="adminTabDiets" onclick="switchAdminTab('diets')">🥗 Diet Plans</button>
+        <button class="editor-category-btn" id="adminTabBodybuilders" onclick="switchAdminTab('bodybuilders')">🏆 Bodybuilders</button>
+        <button class="editor-category-btn" id="adminTabMusic" onclick="switchAdminTab('music')">🎵 Music</button>
+        <button class="editor-category-btn" id="adminTabAnnouncements" onclick="switchAdminTab('announcements')">📢 Announcements</button>
+      </div>
+      <div id="adminTabContent" style="min-height:250px;">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
