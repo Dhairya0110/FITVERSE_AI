@@ -188,7 +188,7 @@ export function generateCustomDietPlan(user: UserProfile, forceRefresh: boolean 
 
   if (isVegan) {
     if (country === 'India') {
-      const variants = [
+      const variants: Meal[][] = [
         [
           { type: 'breakfast', name: 'Moong Dal & Tofu Scramble with Multigrain Roti', calories: 450, proteinG: 30, carbsG: 50, fatG: 12, ingredients: ['Moong Dal', 'Tofu', 'Multigrain Roti', 'Spices'] },
           { type: 'lunch', name: 'Chana Masala with Brown Rice & Cucumber Salad', calories: 650, proteinG: 38, carbsG: 80, fatG: 14, ingredients: ['Chickpeas', 'Brown Rice', 'Tomatoes', 'Cucumber'] },
@@ -227,7 +227,7 @@ export function generateCustomDietPlan(user: UserProfile, forceRefresh: boolean 
     ];
   } else if (isVeg) {
     if (country === 'India') {
-      const variants = [
+      const variants: Meal[][] = [
         [
           { type: 'breakfast', name: 'Paneer Bhurji & Multigrain Toast with Masala Chai', calories: 480, proteinG: 34, carbsG: 42, fatG: 18, ingredients: ['Paneer', 'Multigrain Toast', 'Onions', 'Spices'] },
           { type: 'lunch', name: 'Dal Tadka, Paneer Salad & Multigrain Roti with Curd', calories: 670, proteinG: 42, carbsG: 72, fatG: 20, ingredients: ['Arhar Dal', 'Paneer', 'Roti', 'Curd'] },
@@ -252,7 +252,7 @@ export function generateCustomDietPlan(user: UserProfile, forceRefresh: boolean 
     }
   } else {
     if (country === 'India') {
-      const variants = [
+      const variants: Meal[][] = [
         [
           { type: 'breakfast', name: 'Masala Egg White Omelette with Multigrain Toast', calories: 460, proteinG: 36, carbsG: 40, fatG: 12, ingredients: ['Egg Whites', 'Multigrain Toast', 'Onions', 'Green Chillies'] },
           { type: 'lunch', name: 'Tandoori Chicken Breast with Brown Rice & Cucumber Raita', calories: 680, proteinG: 54, carbsG: 60, fatG: 15, ingredients: ['Chicken Breast', 'Brown Rice', 'Curd'] },
