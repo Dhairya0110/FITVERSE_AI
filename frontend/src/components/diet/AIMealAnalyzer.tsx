@@ -514,8 +514,7 @@ const LANGUAGES = [
 export const AIMealAnalyzer: React.FC<{ metrics: HealthMetrics }> = ({ metrics }) => {
   const { user, diet, addXp } = useFitStore();
 
-  // State
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('English');
+  const selectedLanguage = user.language || 'English';
   const [activePresetIndex, setActivePresetIndex] = useState<number>(0);
   const [currentMeal, setCurrentMeal] = useState<MealAnalysisData>(SAMPLE_PRESETS[0]);
   const [detectedItems, setDetectedItems] = useState<DetectedFoodItem[]>(SAMPLE_PRESETS[0].detectedItems);
@@ -767,25 +766,6 @@ export const AIMealAnalyzer: React.FC<{ metrics: HealthMetrics }> = ({ metrics }
             <p className="text-sm text-slate-300 max-w-2xl">
               Snap or upload a photo of any meal (e.g. Paneer Butter Masala, Khichdi, Biryani). Our neural AI vision classifies food ingredients, computes precise macros & calories, and gives goal-oriented advice.
             </p>
-          </div>
-
-          {/* Multi-Language Selector Dropdown */}
-          <div className="flex items-center gap-3 bg-slate-900/90 p-2.5 rounded-2xl border border-emerald-500/30 shadow-lg">
-            <Globe className="w-5 h-5 text-emerald-400" />
-            <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Analysis Language</span>
-              <select
-                value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="bg-transparent text-xs font-extrabold text-white focus:outline-none cursor-pointer"
-              >
-                {LANGUAGES.map((lang) => (
-                  <option key={lang} value={lang} className="bg-slate-900 text-white">
-                    {lang}
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
         </div>
       </div>

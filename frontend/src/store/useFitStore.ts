@@ -16,10 +16,13 @@ interface FitStoreState {
   isLoggedIn: boolean;
   isOnboarded: boolean;
   theme: 'dark' | 'light';
+  showIntroVideo: boolean;
   
   // Actions
   login: (email: string, fullName?: string, isOnboardedStatus?: boolean) => void;
   logout: () => void;
+  triggerIntroVideo: () => void;
+  closeIntroVideo: () => void;
   setOnboarded: (status: boolean) => void;
   logWater: (amountMl: number) => void;
   addSteps: (steps: number) => void;
@@ -58,6 +61,7 @@ export const useFitStore = create<FitStoreState>((set) => ({
     level: 'intermediate',
     activityLevel: 'active',
     country: 'USA',
+    language: 'English',
     allergies: [],
     dietaryPreference: 'Non-Vegetarian',
     budget: 'medium',
@@ -158,8 +162,12 @@ export const useFitStore = create<FitStoreState>((set) => ({
   isVoiceActive: false,
   isAdmin: false,
   theme: 'dark',
+  showIntroVideo: false,
 
   // Actions
+  triggerIntroVideo: () => set({ showIntroVideo: true }),
+  closeIntroVideo: () => set({ showIntroVideo: false }),
+
   login: (email, fullName, isOnboardedStatus = true) => {
     let streakDays = 1;
     if (typeof window !== 'undefined') {
@@ -183,6 +191,7 @@ export const useFitStore = create<FitStoreState>((set) => ({
     set((state) => ({
       isLoggedIn: true,
       isOnboarded: isOnboardedStatus,
+      showIntroVideo: true,
       user: {
         ...state.user,
         email: email || state.user.email,

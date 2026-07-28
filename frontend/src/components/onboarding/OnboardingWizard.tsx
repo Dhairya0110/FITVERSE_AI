@@ -25,6 +25,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete }
   const [dietaryPreference, setDietaryPreference] = useState(user.dietaryPreference || 'Non-Vegetarian');
   const [allergies, setAllergies] = useState<string[]>(user.allergies || ['None']);
   const [country, setCountry] = useState(user.country || 'USA');
+  const [language, setLanguage] = useState(user.language || 'English');
   const [mood, setMood] = useState('motivated');
   const [selectedAvatarId, setSelectedAvatarId] = useState('m_fit');
 
@@ -47,6 +48,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete }
         dietaryPreference,
         allergies,
         country,
+        language,
       });
 
       if (chosenAvatar) {
@@ -255,21 +257,45 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete }
               </div>
             )}
 
-            {/* Step 5: Region */}
+            {/* Step 5: Region & Language */}
             {step === 5 && (
               <div className="space-y-4">
-                <h3 className="text-base font-extrabold text-cyan-300">Step 5: Country & Cuisine Origin</h3>
-                <select
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-cyan-300 focus:outline-none"
-                >
-                  <option value="USA">USA / Western Cuisine</option>
-                  <option value="India">India (Gujarati, Kathiyawadi, Punjabi, South)</option>
-                  <option value="Japan">Japan (Miso, Natto, Soba, Teriyaki)</option>
-                  <option value="Mediterranean">Mediterranean (Greek, Olive Oil, Hummus)</option>
-                  <option value="Mexico">Latin America (Tacos, Avocado, Fajitas)</option>
-                </select>
+                <div>
+                  <h3 className="text-base font-extrabold text-cyan-300 mb-1">Step 5: Country & System Language</h3>
+                  <p className="text-xs text-slate-400">Select your preferred system language applied across the entire app ecosystem.</p>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Country / Cuisine Origin</label>
+                    <select
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-cyan-300 focus:outline-none"
+                    >
+                      <option value="USA">USA / Western Cuisine</option>
+                      <option value="India">India (Gujarati, Kathiyawadi, Punjabi, South)</option>
+                      <option value="Japan">Japan (Miso, Natto, Soba, Teriyaki)</option>
+                      <option value="Mediterranean">Mediterranean (Greek, Olive Oil, Hummus)</option>
+                      <option value="Mexico">Latin America (Tacos, Avocado, Fajitas)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Ecosystem System Language</label>
+                    <select
+                      value={language}
+                      onChange={(e) => setLanguage(e.target.value)}
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-purple-300 focus:outline-none font-bold"
+                    >
+                      <option value="English">🌐 English</option>
+                      <option value="Hindi">🇮🇳 Hindi (हिंदी)</option>
+                      <option value="Gujarati">🇮🇳 Gujarati (ગુજરાતી)</option>
+                      <option value="Spanish">🇪🇸 Spanish (Español)</option>
+                      <option value="French">🇫🇷 French (Français)</option>
+                      <option value="German">🇩🇪 German (Deutsch)</option>
+                      <option value="Japanese">🇯🇵 Japanese (日本語)</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -312,7 +338,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete }
                         <img
                           src={av.avatarUrl}
                           alt={av.name}
-                          className="w-16 h-16 rounded-xl object-cover border border-slate-800"
+                          className="w-full h-24 rounded-xl object-contain bg-slate-950 p-1 border border-slate-800"
                         />
                         <span className="text-[10px] font-bold text-white mt-1 text-center truncate w-full">{av.name}</span>
                       </div>

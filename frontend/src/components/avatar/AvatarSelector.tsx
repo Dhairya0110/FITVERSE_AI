@@ -84,11 +84,11 @@ export const AvatarSelector: React.FC = () => {
       <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-cyan-500/40 flex flex-col lg:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
         {/* Hologram Aura Showcase */}
         <div className="relative shrink-0 flex flex-col items-center">
-          <div className={`relative w-40 h-40 rounded-3xl overflow-hidden border-2 bg-slate-950 ${auraColors[selectedAura]} transition-all duration-500`}>
+          <div className={`relative w-52 h-64 sm:w-60 sm:h-72 rounded-3xl overflow-hidden border-2 bg-[#080c14] ${auraColors[selectedAura]} transition-all duration-500 flex items-center justify-center p-2`}>
             <img
               src={selectedOption.avatarUrl}
               alt={selectedOption.name}
-              className="w-full h-full object-cover transition-transform duration-500"
+              className="w-full h-full object-contain transition-transform duration-500"
               style={{ transform: `scale(${bodyStages.find(s => s.id === selectedBodyStage)?.scale || '1'})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60"></div>
@@ -244,8 +244,8 @@ export const AvatarSelector: React.FC = () => {
                     : 'royal-card border-[var(--border-color)] hover:border-[#1E5EFF]/40'
                 }`}
               >
-                <div className="relative w-full h-44 rounded-xl overflow-hidden mb-3 border border-[var(--border-color)]">
-                  <img src={opt.avatarUrl} alt={opt.name} className="w-full h-full object-cover" />
+                <div className="relative w-full h-64 sm:h-72 rounded-xl overflow-hidden mb-3 border border-[var(--border-color)] bg-[#080c14]/90 flex items-center justify-center p-2">
+                  <img src={opt.avatarUrl} alt={opt.name} className="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                   {isSelected && (
                     <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[#1E5EFF] flex items-center justify-center text-white font-bold shadow-md">
                       <Check className="w-4 h-4" />

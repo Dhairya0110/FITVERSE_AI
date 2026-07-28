@@ -14,11 +14,12 @@ import { RewardSystem } from '@/components/rewards/RewardSystem';
 import { SettingsView } from '@/components/settings/SettingsView';
 import { NotificationCenter } from '@/components/notifications/NotificationCenter';
 import { AICoachChat } from '@/components/coach/AICoachChat';
+import { IntroVideoModal } from '@/components/common/IntroVideoModal';
 import { useFitStore } from '@/store/useFitStore';
 import { LayoutDashboard, Dumbbell, Utensils, User, Music, Activity, Trophy, Settings, Bell, ChevronRight, Crown, Sparkles } from 'lucide-react';
 
 export default function Home() {
-  const { theme, isLoggedIn, isOnboarded, setOnboarded } = useFitStore();
+  const { theme, isLoggedIn, isOnboarded, setOnboarded, showIntroVideo, closeIntroVideo } = useFitStore();
   const [activeTab, setActiveTab] = useState<
     'dashboard' | 'workout' | 'diet' | 'avatar' | 'music' | 'analytics' | 'rewards' | 'settings' | 'notifications'
   >('dashboard');
@@ -39,6 +40,9 @@ export default function Home() {
 
   return (
     <div data-theme={theme} className="min-h-screen relative pb-16 bg-[var(--primary-bg)] text-[var(--text-primary)] transition-colors duration-400">
+      {/* Intro Video Overlay Modal (Triggered on Login/Register) */}
+      <IntroVideoModal isOpen={showIntroVideo} onClose={closeIntroVideo} />
+
       {/* Background Aurora Blobs */}
       <div className="aurora-bg">
         <div className="aurora-blob blob-cyan"></div>

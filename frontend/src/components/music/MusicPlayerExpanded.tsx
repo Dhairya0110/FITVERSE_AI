@@ -111,7 +111,7 @@ export const MusicPlayerExpanded: React.FC = () => {
   const { user, mood, currentTrack, setCurrentTrack } = useFitStore();
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('English');
+  const selectedLanguage = user.language || 'English';
   const [volume, setVolume] = useState<number>(0.8);
   const [isMuted, setIsMuted] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([
@@ -266,22 +266,6 @@ export const MusicPlayerExpanded: React.FC = () => {
             <p className="text-xs text-[var(--text-secondary)] font-semibold max-w-2xl">
               Search millions of songs on YouTube instantly or stream our high-energy curated workout playlists.
             </p>
-          </div>
-
-          {/* Language Selector Dropdown */}
-          <div className="flex items-center gap-2 bg-[var(--input-bg)] p-2.5 rounded-2xl border border-[var(--border-color)] self-start md:self-auto">
-            <Globe className="w-4 h-4 text-[#1E5EFF]" />
-            <select
-              value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="bg-transparent text-xs font-extrabold text-[var(--text-primary)] focus:outline-none cursor-pointer"
-            >
-              {LANGUAGES.map((lang) => (
-                <option key={lang} value={lang} className="bg-[var(--card-bg)] text-[var(--text-primary)]">
-                  {lang} Music
-                </option>
-              ))}
-            </select>
           </div>
         </div>
 

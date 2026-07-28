@@ -184,23 +184,8 @@ export const AchievementShowcase: React.FC = () => {
             </p>
           </div>
 
-          {/* Action Bar: Language Selector & Daily Claim Button */}
+          {/* Action Bar: Daily Claim Button */}
           <div className="flex items-center gap-3 self-start md:self-auto flex-wrap">
-            <div className="flex items-center gap-2 bg-slate-900/90 p-2 rounded-2xl border border-amber-500/30 shadow-lg">
-              <Globe className="w-4 h-4 text-amber-500" />
-              <select
-                value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="bg-transparent text-xs font-extrabold text-[var(--text-primary)] focus:outline-none cursor-pointer"
-              >
-                {LANGUAGES.map((lang) => (
-                  <option key={lang} value={lang} className="bg-slate-900 text-white">
-                    {lang}
-                  </option>
-                ))}
-              </select>
-            </div>
-
             <button
               onClick={handleClaimDailyReward}
               className={`px-4 py-2.5 rounded-2xl text-xs font-black flex items-center gap-2 transition-all cursor-pointer ${

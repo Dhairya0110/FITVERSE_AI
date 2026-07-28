@@ -43,8 +43,7 @@ const LANGUAGES = [
 export const AIChallengeGenerator: React.FC = () => {
   const { user, addXp, logWater, addSteps, addCaloriesBurned } = useFitStore();
 
-  // State
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('English');
+  const selectedLanguage = user.language || 'English';
   const [activeTypeTab, setActiveTypeTab] = useState<ChallengeType>('daily');
   const [selectedInjury, setSelectedInjury] = useState<InjuryType>('none');
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
@@ -388,25 +387,6 @@ export const AIChallengeGenerator: React.FC = () => {
             <p className="text-sm text-slate-300 max-w-2xl">
               Generates safe, goal-tailored daily, weekly, and monthly fitness quests. Automatically filters out unsafe exercises for reported knee, shoulder, or back injuries.
             </p>
-          </div>
-
-          {/* Language Selector */}
-          <div className="flex items-center gap-3 bg-slate-900/90 p-2.5 rounded-2xl border border-purple-500/30 shadow-lg self-start md:self-auto">
-            <Globe className="w-4 h-4 text-purple-400" />
-            <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Language</span>
-              <select
-                value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="bg-transparent text-xs font-extrabold text-white focus:outline-none cursor-pointer"
-              >
-                {LANGUAGES.map((lang) => (
-                  <option key={lang} value={lang} className="bg-slate-900 text-white">
-                    {lang}
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
         </div>
       </div>

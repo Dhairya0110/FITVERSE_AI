@@ -5,7 +5,7 @@ import { useFitStore } from '@/store/useFitStore';
 import { Settings, Sliders, Sun, Moon, Volume2, Mic, Sparkles, ShieldCheck, Cpu } from 'lucide-react';
 
 export const SettingsView: React.FC = () => {
-  const { theme, toggleTheme, isVoiceActive, toggleVoiceAssistant } = useFitStore();
+  const { user, updateUserProfile, theme, toggleTheme, isVoiceActive, toggleVoiceAssistant } = useFitStore();
   const [ambientGlow, setAmbientGlow] = useState(80);
   const [voiceSpeed, setVoiceSpeed] = useState(1.0);
   const [soundEffects, setSoundEffects] = useState(true);
@@ -49,6 +49,26 @@ export const SettingsView: React.FC = () => {
               {theme === 'dark' ? <Moon className="w-4 h-4 text-indigo-400" /> : <Sun className="w-4 h-4 text-amber-400" />}
               <span className="capitalize">{theme} Theme</span>
             </button>
+          </div>
+
+          <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
+            <div>
+              <span className="text-xs font-bold text-white block">System Language</span>
+              <span className="text-[10px] text-slate-400 block">Applied across AI Coach, Diet, & Music</span>
+            </div>
+            <select
+              value={user.language || 'English'}
+              onChange={(e) => updateUserProfile({ language: e.target.value })}
+              className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-purple-300 font-bold focus:outline-none cursor-pointer"
+            >
+              <option value="English">🌐 English</option>
+              <option value="Hindi">🇮🇳 Hindi (हिंदी)</option>
+              <option value="Gujarati">🇮🇳 Gujarati (ગુજરાતી)</option>
+              <option value="Spanish">🇪🇸 Spanish (Español)</option>
+              <option value="French">🇫🇷 French (Français)</option>
+              <option value="German">🇩🇪 German (Deutsch)</option>
+              <option value="Japanese">🇯🇵 Japanese (日本語)</option>
+            </select>
           </div>
 
           <div className="space-y-2 p-3 rounded-2xl bg-slate-950/80 border border-slate-800">

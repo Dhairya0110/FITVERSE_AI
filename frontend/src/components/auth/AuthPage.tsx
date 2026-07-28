@@ -7,7 +7,7 @@ import { Shield, Lock, Mail, User, Sparkles, ArrowRight, CheckCircle2, AlertCirc
 import { motion } from 'framer-motion';
 
 export const AuthPage: React.FC = () => {
-  const { login } = useFitStore();
+  const { login, theme } = useFitStore();
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -77,7 +77,12 @@ export const AuthPage: React.FC = () => {
         <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl" />
 
         {/* Brand Header */}
-        <div className="text-center space-y-2 relative z-10">
+        <div className="text-center space-y-3 relative z-10 flex flex-col items-center">
+          <img
+            src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
+            alt="FITVERSE AI Logo"
+            className="h-14 sm:h-16 w-auto object-contain transition-all duration-300 rounded-2xl shadow-lg"
+          />
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-extrabold uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5" /> Supabase Cloud & Neural Ecosystem
           </div>

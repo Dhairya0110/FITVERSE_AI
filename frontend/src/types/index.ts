@@ -33,6 +33,7 @@ export interface UserProfile {
   level: FitnessLevel;
   activityLevel: 'sedentary' | 'light' | 'moderate' | 'active' | 'very_active';
   country: string;
+  language?: string;
   allergies: string[];
   dietaryPreference: string;
   budget: 'low' | 'medium' | 'high';

@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useFitStore } from '@/store/useFitStore';
 import { FitVerseVoiceEngine } from '@/lib/voiceEngine';
 import { MoodType } from '@/types';
-import { Zap, Flame, Award, Mic, Sun, Moon, Sparkles, LogIn, LogOut, Volume2, Search, Bell, User } from 'lucide-react';
+import { Zap, Flame, Award, Mic, Sun, Moon, Sparkles, LogIn, LogOut, Volume2, Search, Bell, User, Film } from 'lucide-react';
 
 interface NavbarProps {
   onToggleAuthModal?: () => void;
@@ -12,7 +12,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onToggleAuthModal, onNavigateTab }) => {
-  const { user, isLoggedIn, logout, isVoiceActive, toggleVoiceAssistant, logWater, mood, setMood, theme, toggleTheme } = useFitStore();
+  const { user, isLoggedIn, logout, isVoiceActive, toggleVoiceAssistant, logWater, mood, setMood, theme, toggleTheme, triggerIntroVideo } = useFitStore();
   const [voiceFeedbackText, setVoiceFeedbackText] = useState<string | null>(null);
 
   const voiceEngineRef = useRef<FitVerseVoiceEngine | null>(null);
@@ -58,19 +58,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleAuthModal, onNavigateTab
     <nav className="glass-nav fixed top-0 left-0 right-0 z-50 px-6 lg:px-10 py-3.5 border-b border-[var(--border-color)]">
       <div className="w-full max-w-[1760px] mx-auto flex items-center justify-between gap-4">
         
-        {/* Brand Logo & Name */}
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigateTab?.('dashboard')}>
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#1E5EFF] to-[#00B894] flex items-center justify-center text-white font-black text-xl shadow-md">
-            <Zap className="w-5 h-5 fill-current" />
-          </div>
-          <div>
-            <span className="font-extrabold text-xl tracking-tight text-[var(--text-primary)] font-heading">
-              FITVERSE <span className="text-[#1E5EFF]">AI</span>
-            </span>
-            <span className="block text-[9px] tracking-widest text-[var(--text-muted)] uppercase font-semibold">
-              Royal Luxury Fitness OS
-            </span>
-          </div>
+        {/* Dynamic Brand Logo (Dark / Light Mode) */}
+        <div className="flex items-center gap-3 cursor-pointer group" onClick={() => onNavigateTab?.('dashboard')}>
+          <img
+            src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
+            alt="FITVERSE AI Logo"
+            className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 rounded-xl group-hover:scale-105"
+          />
         </div>
 
         {/* Center Feedback / Quick Stats */}
@@ -140,6 +134,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleAuthModal, onNavigateTab
             title={isVoiceActive ? 'Voice Assistant Active — Click to turn off' : 'Click to activate J.A.R.V.I.S Voice Control'}
           >
             <Mic className="w-4 h-4" />
+          </button>
+
+          {/* Intro Video Replay Button */}
+          <button
+            onClick={triggerIntroVideo}
+            className="p-2.5 rounded-2xl bg-[var(--hover-bg)] border border-[var(--border-color)] hover:border-[#1E5EFF]/50 text-[var(--text-muted)] hover:text-[#1E5EFF] transition-all cursor-pointer hidden sm:flex"
+            title="Watch Cinematic Intro Video"
+          >
+            <Film className="w-4 h-4" />
           </button>
 
           {/* Notifications Shortcut */}
