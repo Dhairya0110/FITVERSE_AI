@@ -42,6 +42,7 @@ export interface UserProfile {
   streakDays: number;
   dailySteps?: number;
   dailyStepsTarget?: number;
+  completedWorkouts?: number;
 }
 
 export interface HealthMetrics {
