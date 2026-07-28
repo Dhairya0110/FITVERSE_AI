@@ -194,13 +194,13 @@ export function generateCustomDietPlan(user: UserProfile, forceRefresh: boolean 
           { type: 'lunch', name: 'Chana Masala with Brown Rice & Cucumber Salad', calories: 650, proteinG: 38, carbsG: 80, fatG: 14, ingredients: ['Chickpeas', 'Brown Rice', 'Tomatoes', 'Cucumber'] },
           { type: 'dinner', name: 'Soya Chunk Curry & Quinoa Bowl', calories: 580, proteinG: 48, carbsG: 55, fatG: 15, ingredients: ['Soya Chunks', 'Quinoa', 'Onions', 'Garlic'] },
           { type: 'snack', name: 'Roasted Makhana & Pea Protein Shake with Almond Milk', calories: 250, proteinG: 25, carbsG: 22, fatG: 5, ingredients: ['Makhana', 'Pea Protein', 'Almond Milk'] },
-        ],
+        ] as Meal[],
         [
           { type: 'breakfast', name: 'Besan Chilla with Spinach & Peanut Butter Oats', calories: 460, proteinG: 28, carbsG: 55, fatG: 14, ingredients: ['Besan (Gram Flour)', 'Spinach', 'Oats', 'Peanut Butter'] },
           { type: 'lunch', name: 'Rajma (Kidney Bean) Curry with Millets & Sprouts', calories: 640, proteinG: 36, carbsG: 78, fatG: 12, ingredients: ['Rajma', 'Millets', 'Moong Sprouts'] },
           { type: 'dinner', name: 'Tofu & Vegetable Stir-Fry with Steamed Rice', calories: 590, proteinG: 44, carbsG: 58, fatG: 16, ingredients: ['Tofu', 'Broccoli', 'Bell Peppers', 'Steamed Rice'] },
           { type: 'snack', name: 'Roasted Chana & Chia Seed Smoothie', calories: 240, proteinG: 22, carbsG: 25, fatG: 6, ingredients: ['Roasted Chana', 'Chia Seeds', 'Soy Milk'] },
-        ],
+        ] as Meal[],
       ];
       meals = variants[variant % variants.length];
     } else if (country === 'Japan') {
@@ -233,13 +233,13 @@ export function generateCustomDietPlan(user: UserProfile, forceRefresh: boolean 
           { type: 'lunch', name: 'Dal Tadka, Paneer Salad & Multigrain Roti with Curd', calories: 670, proteinG: 42, carbsG: 72, fatG: 20, ingredients: ['Arhar Dal', 'Paneer', 'Roti', 'Curd'] },
           { type: 'dinner', name: 'Palak Paneer with Brown Rice & Sprouted Moong', calories: 600, proteinG: 45, carbsG: 52, fatG: 18, ingredients: ['Spinach', 'Paneer', 'Brown Rice', 'Moong'] },
           { type: 'snack', name: 'Roasted Makhana & Scoop of Whey Protein Shake', calories: 260, proteinG: 28, carbsG: 18, fatG: 6, ingredients: ['Makhana', 'Whey Protein'] },
-        ],
+        ] as Meal[],
         [
           { type: 'breakfast', name: 'Paneer Stuffed Paratha / Egg White Omelette with Curd', calories: 490, proteinG: 32, carbsG: 48, fatG: 16, ingredients: ['Paneer', 'Whole Wheat', 'Curd'] },
           { type: 'lunch', name: 'Chana Masala with Paneer Tikka & Quinoa', calories: 680, proteinG: 44, carbsG: 68, fatG: 18, ingredients: ['Chickpeas', 'Paneer Tikka', 'Quinoa'] },
           { type: 'dinner', name: 'High-Protein Soya Matar Curry with Brown Rice', calories: 590, proteinG: 46, carbsG: 50, fatG: 15, ingredients: ['Soya Chunks', 'Green Peas', 'Brown Rice'] },
           { type: 'snack', name: 'Greek Yogurt with Almonds & Honey', calories: 250, proteinG: 24, carbsG: 16, fatG: 8, ingredients: ['Greek Yogurt', 'Almonds'] },
-        ],
+        ] as Meal[],
       ];
       meals = variants[variant % variants.length];
     } else {
@@ -258,13 +258,13 @@ export function generateCustomDietPlan(user: UserProfile, forceRefresh: boolean 
           { type: 'lunch', name: 'Tandoori Chicken Breast with Brown Rice & Cucumber Raita', calories: 680, proteinG: 54, carbsG: 60, fatG: 15, ingredients: ['Chicken Breast', 'Brown Rice', 'Curd'] },
           { type: 'dinner', name: 'Fish Curry (Rohu / Salmon) with Quinoa & Steamed Broccoli', calories: 590, proteinG: 48, carbsG: 42, fatG: 16, ingredients: ['Fish Fillet', 'Quinoa', 'Broccoli', 'Spices'] },
           { type: 'snack', name: 'Roasted Makhana & Whey Protein Shake', calories: 250, proteinG: 28, carbsG: 16, fatG: 5, ingredients: ['Makhana', 'Whey Protein'] },
-        ],
+        ] as Meal[],
         [
           { type: 'breakfast', name: 'Chicken Keema Paratha / Scrambled Eggs with Toast', calories: 500, proteinG: 38, carbsG: 44, fatG: 16, ingredients: ['Chicken Keema', 'Whole Wheat'] },
           { type: 'lunch', name: 'Grilled Chicken Bowl with Rajma & Basmati Rice', calories: 700, proteinG: 56, carbsG: 68, fatG: 16, ingredients: ['Chicken', 'Kidney Beans', 'Rice'] },
           { type: 'dinner', name: 'Grilled Lemon Pepper Fish with Asparagus', calories: 580, proteinG: 50, carbsG: 35, fatG: 14, ingredients: ['Fish Fillet', 'Asparagus', 'Lemon'] },
           { type: 'snack', name: 'Boiled Egg Whites & Almonds', calories: 240, proteinG: 26, carbsG: 4, fatG: 10, ingredients: ['Egg Whites', 'Almonds'] },
-        ],
+        ] as Meal[],
       ];
       meals = variants[variant % variants.length];
     } else {

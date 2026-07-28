@@ -89,8 +89,10 @@ export interface WorkoutPlan {
   exercises: Exercise[];
 }
 
+export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack';
+
 export interface Meal {
-  type: 'breakfast' | 'lunch' | 'dinner' | 'snack';
+  type: MealType;
   name: string;
   calories: number;
   proteinG: number;

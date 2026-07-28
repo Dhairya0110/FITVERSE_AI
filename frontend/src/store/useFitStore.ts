@@ -269,17 +269,6 @@ export const useFitStore = create<FitStoreState>((set) => ({
       };
     }),
 
-  addXp: (amount) =>
-    set((state) => {
-      const newXp = state.user.xp + amount;
-      const newLevel = Math.floor(newXp / 100) + 1;
-      syncXpToSupabase(newXp, state.user.coins + 25);
-      return {
-        user: { ...state.user, xp: newXp, coins: state.user.coins + 25 },
-        avatar: { ...state.avatar, level: newLevel },
-      };
-    }),
-
   setMood: (mood) => set({ mood }),
 
   addXp: (amount) =>
@@ -288,7 +277,7 @@ export const useFitStore = create<FitStoreState>((set) => ({
       const newCoins = state.user.coins + Math.floor(amount / 2);
       const newLevel = Math.floor(newXp / 100) + 1;
       
-      syncXpToSupabase(state.user.id, newXp);
+      syncXpToSupabase(newXp, newCoins);
 
       return {
         user: {
@@ -302,25 +291,6 @@ export const useFitStore = create<FitStoreState>((set) => ({
         },
       };
     }),
-
-  addSteps: (steps) =>
-    set((state) => ({
-      user: {
-        ...state.user,
-        dailySteps: (state.user.dailySteps || 0) + steps,
-      },
-    })),
-
-  addCaloriesBurned: (cals) =>
-    set((state) => ({
-      user: {
-        ...state.user,
-        xp: state.user.xp + Math.floor(cals / 10),
-      },
-      currentWorkout: state.currentWorkout
-        ? { ...state.currentWorkout, caloriesBurned: state.currentWorkout.caloriesBurned + cals }
-        : null,
-    })),
 
   setSelectedAvatar: (avatarId, gender, bodyType) =>
     set((state) => ({
