@@ -209,7 +209,7 @@ export const useFitStore = create<FitStoreState>((set) => ({
       const newLevel = Math.floor(newXp / 100) + 1;
       const newCompleted = (state.user.completedWorkouts || 0) + 1;
 
-      syncXpToSupabase(state.user.id, newXp);
+      syncXpToSupabase(newXp, newCoins);
 
       return {
         user: {
